@@ -1668,6 +1668,7 @@ footer p {
         font-size: 15px; /* Slightly reduce base font size for extremely small devices */
     }
 }
+/* Base Styles */
 body {
   background-color: #0a0a0a;
   font-family: 'Segoe UI', sans-serif;
@@ -1676,33 +1677,38 @@ body {
   color: #fff;
 }
 
-/* Centering the container */
+/* Email Container Centering */
 .email-container {
   display: flex;
   justify-content: center;
   align-items: center;
-  margin: 100px 20px;
+  margin: 60px 20px;
+  padding: 0 10px;
 }
 
-/* Styling the row */
+/* Email Row Layout */
 .email-row {
   display: flex;
+  flex-wrap: wrap;
   align-items: center;
-  gap: 12px;
+  justify-content: center;
+  gap: 6px; /* reduced spacing */
   background: #1e1e1e;
-  padding: 25px 35px;
+  padding: 18px 24px;
   border-radius: 20px;
   box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
-  font-size: 20px;
+  font-size: 18px;
   line-height: 1.6;
   animation: fadeInRise 1s ease-out;
+  max-width: 90vw;
+  text-align: center;
   transition: all 0.4s ease;
 }
 
-/* Label text */
+/* Label Text Styling */
 .label {
   font-weight: bold;
-  font-size: 20px;
+  font-size: 18px;
   white-space: nowrap;
   text-shadow:
     1px 1px 0 #000,
@@ -1711,16 +1717,16 @@ body {
     4px 4px 3px rgba(0, 0, 0, 0.2);
 }
 
-/* Typing wrapper */
+/* Typing Effect Wrapper */
 .typing-wrapper {
   overflow: hidden;
   border-right: 2px solid #ccc;
   white-space: nowrap;
-  animation: typing 3s steps(28, end) forwards, blink 0.7s step-end infinite;
   width: 0;
+  animation: typing 3s steps(30, end) forwards, blink 0.7s step-end infinite;
 }
 
-/* Typing text */
+/* Typing Text (Email) */
 .typing-text {
   display: inline-block;
   color: whitesmoke;
@@ -1731,6 +1737,7 @@ body {
     2px 2px 1px rgba(0, 0, 0, 0.4),
     3px 3px 2px rgba(0, 0, 0, 0.3),
     4px 4px 3px rgba(0, 0, 0, 0.2);
+  transition: all 0.3s ease;
 }
 
 .typing-text:hover {
@@ -1739,10 +1746,10 @@ body {
   transform: scale(1.05);
 }
 
-/* Keyframes for typing effect */
+/* Keyframes */
 @keyframes typing {
   from { width: 0; }
-  to { width: 270px; } /* Adjust to your text width */
+  to { width: 270px; } /* Match text width */
 }
 
 @keyframes blink {
@@ -1750,7 +1757,6 @@ body {
   50% { border-color: #ccc; }
 }
 
-/* Entry animation */
 @keyframes fadeInRise {
   from {
     opacity: 0;
@@ -1759,5 +1765,25 @@ body {
   to {
     opacity: 1;
     transform: translateY(0);
+  }
+}
+
+/* Responsive Design */
+@media (max-width: 600px) {
+  .email-row {
+    flex-direction: column;
+    padding: 16px;
+    gap: 4px;
+    font-size: 16px;
+  }
+
+  .label,
+  .typing-text {
+    font-size: 16px;
+    text-align: center;
+  }
+
+  .typing-wrapper {
+    animation: typing 3s steps(30, end) forwards, blink 0.7s step-end infinite;
   }
 }
