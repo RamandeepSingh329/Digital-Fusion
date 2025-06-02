@@ -1668,95 +1668,92 @@ footer p {
         font-size: 15px; /* Slightly reduce base font size for extremely small devices */
     }
 }
-/* Base Styles */
-body {
-  background-color: #0a0a0a;
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #fff;
-}
-
-/* Email Container Centering */body {
-  background-color: #0a0a0a;
-  font-family: 'Segoe UI', sans-serif;
-  margin: 0;
-  padding: 0;
-  color: #fff;
-}
-
-/* === Container === */
+/* Container with 3D Shadow + Float Animation */
 .email-container {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  margin: 60px 20px;
-  padding: 0 10px;
-}
-
-/* === Email Row === */
-.email-row {
-  display: flex;
-  flex-wrap: wrap;
-  align-items: center;
-  justify-content: center;
-  gap: 6px;
-  background: #1e1e1e;
-  padding: 20px 30px;
+background: linear-gradient(135deg, #1f2937, #374151);
+  padding: 2.5rem;
   border-radius: 20px;
   box-shadow:
-    6px 6px 20px rgba(0, 0, 0, 0.6),
-    inset -2px -2px 4px rgba(255, 255, 255, 0.05);
-  font-size: 18px;
-  line-height: 1.6;
-  animation: fadeInRise 1s ease-out;
-  max-width: 90vw;
+    0 10px 30px rgba(0, 0, 0, 0.2), /* strong bottom shadow */
+    0 -5px 15px rgba(255, 255, 255, 0.3); /* subtle top light */
+  max-width: 600px;
+  margin: 4rem auto;
   text-align: center;
-  transition: all 0.4s ease;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  animation: float 4s ease-in-out infinite, fadeInUp 1s ease-out;
+  transform-style: preserve-3d;
 }
 
-/* === Shared Text Style (Label + Email Link) === */
-.label,
-.typing-text {
+/* Email Row */
+.email-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  flex-wrap: wrap;
+  font-size: 1.3rem;
+  color: #1f2937;
+}
+
+/* Label Styling with Pop-In Animation */
+.label {
+  font-weight: 600;
+  color: #2563eb;
+  transform: translateY(40px) rotateX(90deg);
+  opacity: 0;
+  animation: popIn 0.8s forwards 0.3s;
+  backface-visibility: hidden;
+}
+
+/* Email Link with Glow and Hover Elevation */
+.email-link {
+  position: relative;
+  color: #10b981;
   font-weight: bold;
-  font-size: 18px;
-  color: #f5f5f5;
-  padding: 8px 14px;
-  border-radius: 12px;
-  background: linear-gradient(135deg, #2c2c2c, #3a3a3a);
-  text-shadow:
-    1px 1px 0 #000,
-    2px 2px 1px rgba(0, 0, 0, 0.4),
-    3px 3px 2px rgba(0, 0, 0, 0.3),
-    4px 4px 3px rgba(0, 0, 0, 0.2);
-  box-shadow:
-    3px 3px 8px rgba(0, 0, 0, 0.5),
-    inset -1px -1px 2px rgba(255, 255, 255, 0.04);
-  transition: all 0.3s ease;
-  animation: glowPulse 3s ease-in-out infinite;
   text-decoration: none;
-  outline: none;
+  padding: 4px 6px;
+  opacity: 0;
+  transform: translateY(40px) rotateX(90deg);
+  animation: popIn 0.8s forwards 0.5s;
+  transition: all 0.3s ease;
+  backface-visibility: hidden;
 }
 
-/* === Unified Hover + Focus === */
-.label:hover,
-.typing-text:hover,
-.label:focus,
-.typing-text:focus {
-  transform: translateY(-2px) scale(1.05);
-  color: #c0c0c0;
-  text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.4);
-  background: linear-gradient(135deg, #333, #444);
-  box-shadow:
-    0 0 12px rgba(255, 255, 255, 0.15),
-    inset 0 0 8px rgba(255, 255, 255, 0.1);
+.email-link::after {
+  content: '';
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: 0%;
+  height: 2px;
+  background: #10b981;
+  transition: width 0.4s ease;
 }
 
-/* === Entry Animation === */
-@keyframes fadeInRise {
+.email-link:hover::after {
+  width: 100%;
+}
+
+.email-link:hover {
+  color: #0f766e;
+  transform: scale(1.08);
+  text-shadow: 0 2px 8px rgba(16, 185, 129, 0.5);
+}
+
+/* Animations */
+@keyframes float {
+  0%, 100% {
+    transform: translateY(0px) rotateX(0);
+  }
+  50% {
+    transform: translateY(-10px) rotateX(2deg);
+  }
+}
+
+@keyframes fadeInUp {
   from {
     opacity: 0;
-    transform: translateY(20px);
+    transform: translateY(30px);
   }
   to {
     opacity: 1;
@@ -1764,31 +1761,18 @@ body {
   }
 }
 
-/* === Glow Animation === */
-@keyframes glowPulse {
-  0% {
-    text-shadow: 1px 1px 0 #000, 0 0 6px rgba(255, 255, 255, 0.1);
-  }
-  50% {
-    text-shadow: 1px 1px 0 #000, 0 0 14px rgba(255, 255, 255, 0.2);
-  }
-  100% {
-    text-shadow: 1px 1px 0 #000, 0 0 6px rgba(255, 255, 255, 0.1);
+@keyframes popIn {
+  to {
+    transform: translateY(0) rotateX(0);
+    opacity: 1;
   }
 }
 
-/* === Responsive === */
-@media (max-width: 600px) {
+/* Responsive */
+@media (max-width: 500px) {
   .email-row {
     flex-direction: column;
-    padding: 16px;
-    gap: 6px;
-    font-size: 16px;
-  }
-
-  .label,
-  .typing-text {
-    font-size: 16px;
     text-align: center;
   }
 }
+
