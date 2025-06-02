@@ -208,25 +208,3 @@ document.addEventListener('DOMContentLoaded', () => {
         return re.test(String(email).toLowerCase());
     }
 });
-document.addEventListener("DOMContentLoaded", function () {
-    const toggleBtn = document.querySelector(".menu-toggle");
-    const navLinks = document.querySelector(".nav-links");
-
-    // Only bind event if screen width is <= 768px
-    function setupMobileMenu() {
-      if (window.innerWidth <= 768) {
-        toggleBtn.addEventListener("click", () => {
-          navLinks.classList.toggle("active");
-        });
-      }
-    }
-
-    setupMobileMenu();
-
-    // Optional: reset menu when resizing to desktop
-    window.addEventListener("resize", () => {
-      if (window.innerWidth > 768) {
-        navLinks.classList.remove("active");
-      }
-    });
-  });
