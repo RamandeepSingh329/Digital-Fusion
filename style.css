@@ -1668,3 +1668,96 @@ footer p {
         font-size: 15px; /* Slightly reduce base font size for extremely small devices */
     }
 }
+body {
+  background-color: #0a0a0a;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+/* Centering the container */
+.email-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  margin: 100px 20px;
+}
+
+/* Styling the row */
+.email-row {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  background: #1e1e1e;
+  padding: 25px 35px;
+  border-radius: 20px;
+  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  font-size: 20px;
+  line-height: 1.6;
+  animation: fadeInRise 1s ease-out;
+  transition: all 0.4s ease;
+}
+
+/* Label text */
+.label {
+  font-weight: bold;
+  font-size: 20px;
+  white-space: nowrap;
+  text-shadow:
+    1px 1px 0 #000,
+    2px 2px 1px rgba(0, 0, 0, 0.4),
+    3px 3px 2px rgba(0, 0, 0, 0.3),
+    4px 4px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Typing wrapper */
+.typing-wrapper {
+  overflow: hidden;
+  border-right: 2px solid #ccc;
+  white-space: nowrap;
+  animation: typing 3s steps(28, end) forwards, blink 0.7s step-end infinite;
+  width: 0;
+}
+
+/* Typing text */
+.typing-text {
+  display: inline-block;
+  color: whitesmoke;
+  font-weight: bold;
+  text-decoration: none;
+  text-shadow:
+    1px 1px 0 #000,
+    2px 2px 1px rgba(0, 0, 0, 0.4),
+    3px 3px 2px rgba(0, 0, 0, 0.3),
+    4px 4px 3px rgba(0, 0, 0, 0.2);
+}
+
+.typing-text:hover {
+  color: #c0c0c0;
+  text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.4);
+  transform: scale(1.05);
+}
+
+/* Keyframes for typing effect */
+@keyframes typing {
+  from { width: 0; }
+  to { width: 270px; } /* Adjust to your text width */
+}
+
+@keyframes blink {
+  0%, 100% { border-color: transparent; }
+  50% { border-color: #ccc; }
+}
+
+/* Entry animation */
+@keyframes fadeInRise {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
