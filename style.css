@@ -154,95 +154,277 @@ h1, h2, h3, h4 {
     font-weight: 700;
 }
 
-/* --- ENHANCED H2 & H3 STYLING --- */
-h2, h3 { /* Combined styling for h2 and h3 */
+/* --- ENHANCED H2 STYLING --- */
+h2 {
     text-align: center;
-    font-size: 2.8em; /* Base size */
-    margin-bottom: var(--spacing-lg);
+    font-size: 2.8em; /* Base size for h2 */
+    margin-bottom: var(--spacing-lg); /* Example: Could be --spacing-xl for h2 specifically */
     position: relative;
     padding-bottom: var(--spacing-sm);
     color: var(--text-color-dark);
     letter-spacing: 0.03em;
     line-height: 1.2;
-    
-    text-shadow: 
+
+    text-shadow:
         1px 1px 3px rgba(0,0,0,0.3),
         3px 3px 8px rgba(0,0,0,0.15);
 
-    transform: perspective(1000px) translateZ(0) rotateX(0deg); 
+    transform: perspective(1000px) translateZ(0) rotateX(0deg);
     transform-style: preserve-3d;
 
-    transition: 
+    transition:
         color var(--animation-speed-normal) var(--animation-ease-in-out-quint),
         text-shadow var(--animation-speed-normal) var(--animation-ease-in-out-quint),
         transform var(--animation-speed-normal) var(--animation-ease-out-back);
 }
 
-h2::after, h3::after { /* Combined ::after styling */
+/* --- ENHANCED H3 STYLING --- */
+h3 {
+    text-align: center;
+    font-size: 2.4em; /* Example: Smaller font size for h3 */
+    margin-bottom: var(--spacing-md); /* Example: Different margin for h3 */
+    position: relative;
+    padding-bottom: var(--spacing-sm);
+    color: var(--text-color-dark); /* You might want a slightly different shade */
+    letter-spacing: 0.025em; /* Slightly tighter letter spacing */
+    line-height: 1.3;
+
+    text-shadow:
+        0.5px 0.5px 2px rgba(0,0,0,0.2),
+        2px 2px 5px rgba(0,0,0,0.1); /* Lighter shadow for h3 */
+
+    transform: perspective(1000px) translateZ(0) rotateX(0deg);
+    transform-style: preserve-3d;
+
+    transition:
+        color var(--animation-speed-normal) var(--animation-ease-in-out-quint),
+        text-shadow var(--animation-speed-normal) var(--animation-ease-in-out-quint),
+        transform var(--animation-speed-normal) var(--animation-ease-out-back);
+}
+
+/* --- H2 ::after styling --- */
+h2::after {
     content: '';
     position: absolute;
     left: 50%;
     bottom: 0;
-    transform: translateX(-50%) scaleX(1); 
-    width: 80px;
-    height: 4px;
+    transform: translateX(-50%) scaleX(1);
+    width: 80px; /* Specific width for h2 underline */
+    height: 4px; /* Specific height for h2 underline */
     background-color: var(--primary-color);
     border-radius: 2px;
-    
-    transition: 
-        width var(--animation-speed-normal) var(--animation-ease-in-out-quint), 
-        background-color var(--animation-speed-normal) var(--animation-ease-in-out-quint), 
+
+    transition:
+        width var(--animation-speed-normal) var(--animation-ease-in-out-quint),
+        background-color var(--animation-speed-normal) var(--animation-ease-in-out-quint),
         transform var(--animation-speed-normal) var(--animation-ease-out-back);
 }
 
-/* --- H2 & H3 Hover Effects --- */
-h2:hover, h3:hover {
-    color: var(--primary-color); 
-    transform: perspective(1000px) translateZ(10px) rotateX(5deg) scale(1.02); 
-    text-shadow: 
-        2px 2px 5px rgba(0,0,0,0.4), 
-        5px 5px 15px rgba(0,0,0,0.25); 
+/* --- H3 ::after styling --- */
+h3::after {
+    content: '';
+    position: absolute;
+    left: 50%;
+    bottom: 0;
+    transform: translateX(-50%) scaleX(1);
+    width: 60px; /* Specific (smaller) width for h3 underline */
+    height: 3px; /* Specific (thinner) height for h3 underline */
+    background-color: var(--secondary-color); /* Different color for h3 underline */
+    border-radius: 1.5px; /* Smaller border-radius */
+
+    transition:
+        width var(--animation-speed-normal) var(--animation-ease-in-out-quint),
+        background-color var(--animation-speed-normal) var(--animation-ease-in-out-quint),
+        transform var(--animation-speed-normal) var(--animation-ease-out-back);
+}
+
+/* --- H2 Hover Effects --- */
+h2:hover {
+    color: var(--primary-color);
+    transform: perspective(1000px) translateZ(10px) rotateX(5deg) scale(1.02);
+    text-shadow:
+        2px 2px 5px rgba(0,0,0,0.4),
+        5px 5px 15px rgba(0,0,0,0.25);
     cursor: pointer;
 }
 
-h2:hover::after, h3:hover::after {
-    width: 120px; 
-    background-color: var(--secondary-color); 
+/* --- H3 Hover Effects --- */
+h3:hover {
+    color: var(--accent-color); /* Could be another color for h3 hover */
+    transform: perspective(1000px) translateZ(8px) rotateX(4deg) scale(1.01); /* Slightly less dramatic for h3 */
+    text-shadow:
+        1.5px 1.5px 4px rgba(0,0,0,0.3),
+        4px 4px 10px rgba(0,0,0,0.2); /* Lighter hover shadow for h3 */
+    cursor: pointer;
+}
+
+/* --- H2 Hover ::after effects --- */
+h2:hover::after {
+    width: 120px;
+    background-color: var(--secondary-color);
     transform: translateX(-50%) scaleX(1.2);
 }
 
-/* --- Responsive Adjustments for H2 & H3 --- */
+/* --- H3 Hover ::after effects --- */
+h3:hover::after {
+    width: 90px; /* Smaller hover width for h3 */
+    background-color: var(--primary-color); /* Different hover color for h3 underline */
+    transform: translateX(-50%) scaleX(1.1); /* Less dramatic scale for h3 */
+}
+
+/* --- Responsive Adjustments for H2 --- */
 @media (max-width: 768px) {
-    h2, h3 {
+    h2 {
         font-size: 2em; /* Smaller font size on tablets/smaller desktops */
         margin-bottom: var(--spacing-md);
     }
-    h2::after, h3::after {
+    h2::after {
         width: 60px; /* Smaller underline on smaller screens */
     }
 }
 
 @media (max-width: 480px) {
-    h2, h3 {
+    h2 {
         font-size: 1.8em; /* Even smaller font size on mobile */
         margin-bottom: var(--spacing-sm);
     }
-    h2::after, h3::after {
+    h2::after {
         width: 50px; /* Even smaller underline on mobile */
     }
 }
 
+/* --- Responsive Adjustments for H3 --- */
+@media (max-width: 768px) {
+    h3 {
+        font-size: 1.8em; /* Smaller font size on tablets/smaller desktops */
+        margin-bottom: var(--spacing-sm);
+    }
+    h3::after {
+        width: 45px; /* Smaller underline on smaller screens */
+    }
+}
+
+@media (max-width: 480px) {
+    h3 {
+        font-size: 1.6em; /* Even smaller font size on mobile */
+        margin-bottom: var(--spacing-xs); /* Even smaller margin for h3 on mobile */
+    }
+    h3::after {
+        width: 40px; /* Even smaller underline on mobile */
+    }
+}
 
 /* Header & Navigation */
+/* --- ENHANCED HEADER STYLING --- */
 header {
-    background-color: var(--bg-light);
-    box-shadow: 0 5px 15px var(--shadow-light);
+    background-color: var(--bg-light); /* Your existing light background */
+    box-shadow: 0 5px 15px var(--shadow-light); /* Existing shadow */
     position: sticky;
     top: 0;
     z-index: 1000;
-    animation: fadeInDown 0.8s ease-out;
+    padding: var(--spacing-md) 0; /* Add top/bottom padding to give it more presence */
+
+    /* Initial Load Animation */
+    animation: fadeInSlideBounce 1s ease-out forwards;
+
+    /* Transitions for hover/scroll effects */
+    transition:
+        background-color 0.3s var(--animation-ease-in-out-quint),
+        box-shadow 0.3s var(--animation-ease-in-out-quint),
+        padding 0.3s var(--animation-ease-in-out-quint), /* Animate padding changes */
+        transform 0.3s var(--animation-ease-in-out-quint); /* For any potential transform changes */
+
+    /* Performance hint for browser */
+    will-change: transform, box-shadow, background-color, padding;
+
+    /* Subtle depth/texture via pseudo-elements or gradients (optional) */
+    /* You could layer a subtle gradient here for depth, or use a pseudo-element */
+    /*
+    &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        background: linear-gradient(to bottom, rgba(255,255,255,0.05) 0%, rgba(0,0,0,0.02) 100%);
+        pointer-events: none; // Ensures clicks pass through
+        z-index: -1; // Place behind content
+    }
+    */
 }
 
+/* Define keyframes for a more dynamic entrance */
+@keyframes fadeInSlideBounce {
+    0% {
+        opacity: 0;
+        transform: translateY(-50px) scale(0.9); /* Start higher, slightly smaller */
+        box-shadow: 0 0 0 rgba(0,0,0,0); /* No shadow at start */
+    }
+    60% {
+        opacity: 1;
+        transform: translateY(10px) scale(1.02); /* Overshoot slightly for a bounce effect */
+        box-shadow: 0 10px 20px var(--shadow-light); /* Stronger shadow mid-animation */
+    }
+    100% {
+        opacity: 1;
+        transform: translateY(0) scale(1);
+        box-shadow: 0 5px 15px var(--shadow-light);
+    }
+}
+
+/* --- SCROLL-BASED EFFECTS (Requires JavaScript to add/remove a class like 'scrolled') --- */
+/* This is a common pattern for when the header is "scrolled" into sticky position */
+header.scrolled {
+    background-color: var(--bg-light-alt); /* Slightly darker/different background when scrolled */
+    box-shadow: 0 8px 25px var(--shadow-dark); /* Deeper, more prominent shadow */
+    padding: var(--spacing-sm) 0; /* Shrink header height subtly on scroll */
+    transform: translateY(0); /* Ensure no lingering transform from previous states */
+    /* You could also add a subtle border-bottom here */
+    border-bottom: 1px solid var(--border-color-light);
+}
+
+/* --- INTERACTIVE STATES (Optional, for the header as a whole) --- */
+/*
+header:hover {
+    box-shadow: 0 7px 20px var(--shadow-hover-header); // Slightly more intense shadow on hover
+    // transform: scale(1.005); // A very subtle overall scale might be too much, test carefully
+}
+*/
+
+/* --- RESPONSIVE ADJUSTMENTS FOR HEADER ITSELF --- */
+@media (max-width: 992px) { /* Tablet and smaller desktop */
+    header {
+        padding: var(--spacing-sm) 0; /* Reduce padding on smaller screens */
+    }
+}
+
+@media (max-width: 768px) { /* Tablets and smaller */
+    header {
+        padding: var(--spacing-xs) 0; /* Further reduce padding for compact look */
+        box-shadow: 0 3px 10px var(--shadow-light); /* Lighter shadow on mobile */
+    }
+}
+
+/* Make sure your variables are defined (example values) */
+:root {
+    --bg-light: #ffffff; /* White background */
+    --bg-light-alt: #f0f0f0; /* Slightly off-white for scrolled state */
+    --shadow-light: rgba(0, 0, 0, 0.1);
+    --shadow-dark: rgba(0, 0, 0, 0.2);
+    --shadow-hover-header: rgba(0, 0, 0, 0.25);
+    --border-color-light: #e0e0e0;
+
+    /* Spacing variables */
+    --spacing-xs: 0.5em; /* e.g., 8px */
+    --spacing-sm: 1em;   /* e.g., 16px */
+    --spacing-md: 1.5em; /* e.g., 24px */
+    --spacing-lg: 2em;   /* e.g., 32px */
+
+    /* Animation variables */
+    --animation-speed-normal: 0.3s;
+    --animation-ease-in-out-quint: cubic-bezier(0.86, 0, 0.07, 1); /* Smoother ease-in-out */
+}
 #main-nav {
     display: flex;
     justify-content: space-between;
