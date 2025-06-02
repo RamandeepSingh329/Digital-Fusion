@@ -1677,7 +1677,15 @@ body {
   color: #fff;
 }
 
-/* Email Container Centering */
+/* Email Container Centering */body {
+  background-color: #0a0a0a;
+  font-family: 'Segoe UI', sans-serif;
+  margin: 0;
+  padding: 0;
+  color: #fff;
+}
+
+/* === Container === */
 .email-container {
   display: flex;
   justify-content: center;
@@ -1686,17 +1694,19 @@ body {
   padding: 0 10px;
 }
 
-/* Email Row Layout */
+/* === Email Row === */
 .email-row {
   display: flex;
   flex-wrap: wrap;
   align-items: center;
   justify-content: center;
-  gap: 6px; /* reduced spacing */
+  gap: 6px;
   background: #1e1e1e;
-  padding: 18px 24px;
+  padding: 20px 30px;
   border-radius: 20px;
-  box-shadow: 0 12px 30px rgba(0, 0, 0, 0.4);
+  box-shadow:
+    6px 6px 20px rgba(0, 0, 0, 0.6),
+    inset -2px -2px 4px rgba(255, 255, 255, 0.05);
   font-size: 18px;
   line-height: 1.6;
   animation: fadeInRise 1s ease-out;
@@ -1705,58 +1715,44 @@ body {
   transition: all 0.4s ease;
 }
 
-/* Label Text Styling */
-.label {
+/* === Shared Text Style (Label + Email Link) === */
+.label,
+.typing-text {
   font-weight: bold;
   font-size: 18px;
-  white-space: nowrap;
+  color: #f5f5f5;
+  padding: 8px 14px;
+  border-radius: 12px;
+  background: linear-gradient(135deg, #2c2c2c, #3a3a3a);
   text-shadow:
     1px 1px 0 #000,
     2px 2px 1px rgba(0, 0, 0, 0.4),
     3px 3px 2px rgba(0, 0, 0, 0.3),
     4px 4px 3px rgba(0, 0, 0, 0.2);
-}
-
-/* Typing Effect Wrapper */
-.typing-wrapper {
-  overflow: hidden;
-  border-right: 2px solid #ccc;
-  white-space: nowrap;
-  width: 0;
-  animation: typing 3s steps(30, end) forwards, blink 0.7s step-end infinite;
-}
-
-/* Typing Text (Email) */
-.typing-text {
-  display: inline-block;
-  color: whitesmoke;
-  font-weight: bold;
-  text-decoration: none;
-  text-shadow:
-    1px 1px 0 #000,
-    2px 2px 1px rgba(0, 0, 0, 0.4),
-    3px 3px 2px rgba(0, 0, 0, 0.3),
-    4px 4px 3px rgba(0, 0, 0, 0.2);
+  box-shadow:
+    3px 3px 8px rgba(0, 0, 0, 0.5),
+    inset -1px -1px 2px rgba(255, 255, 255, 0.04);
   transition: all 0.3s ease;
+  animation: glowPulse 3s ease-in-out infinite;
+  text-decoration: none;
+  outline: none;
 }
 
-.typing-text:hover {
+/* === Unified Hover + Focus === */
+.label:hover,
+.typing-text:hover,
+.label:focus,
+.typing-text:focus {
+  transform: translateY(-2px) scale(1.05);
   color: #c0c0c0;
   text-shadow: 2px 2px 6px rgba(255, 255, 255, 0.4);
-  transform: scale(1.05);
+  background: linear-gradient(135deg, #333, #444);
+  box-shadow:
+    0 0 12px rgba(255, 255, 255, 0.15),
+    inset 0 0 8px rgba(255, 255, 255, 0.1);
 }
 
-/* Keyframes */
-@keyframes typing {
-  from { width: 0; }
-  to { width: 270px; } /* Match text width */
-}
-
-@keyframes blink {
-  0%, 100% { border-color: transparent; }
-  50% { border-color: #ccc; }
-}
-
+/* === Entry Animation === */
 @keyframes fadeInRise {
   from {
     opacity: 0;
@@ -1768,12 +1764,25 @@ body {
   }
 }
 
-/* Responsive Design */
+/* === Glow Animation === */
+@keyframes glowPulse {
+  0% {
+    text-shadow: 1px 1px 0 #000, 0 0 6px rgba(255, 255, 255, 0.1);
+  }
+  50% {
+    text-shadow: 1px 1px 0 #000, 0 0 14px rgba(255, 255, 255, 0.2);
+  }
+  100% {
+    text-shadow: 1px 1px 0 #000, 0 0 6px rgba(255, 255, 255, 0.1);
+  }
+}
+
+/* === Responsive === */
 @media (max-width: 600px) {
   .email-row {
     flex-direction: column;
     padding: 16px;
-    gap: 4px;
+    gap: 6px;
     font-size: 16px;
   }
 
@@ -1781,9 +1790,5 @@ body {
   .typing-text {
     font-size: 16px;
     text-align: center;
-  }
-
-  .typing-wrapper {
-    animation: typing 3s steps(30, end) forwards, blink 0.7s step-end infinite;
   }
 }
