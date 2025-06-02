@@ -447,6 +447,16 @@ header:hover {
         4px 4px 0 #003271, 5px 5px 0 #00265b,
         6px 6px 0 rgba(0, 0, 0, 0.4), 7px 7px 10px rgba(0, 0, 0, 0.3);
 }
+@media (max-width: 768px) {
+    .logo {
+        text-align: center;
+    }
+
+    .logo h1 {
+        display: block;
+        margin: 0 auto;
+    }
+}
 
 /* Adjust logo size for smaller screens */
 @media (max-width: 768px) {
